@@ -1,0 +1,8 @@
+[package]
+name = "apple_health_export_converter"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.38"
+clap = { version = "4.5.4", features = ["derive"] }
