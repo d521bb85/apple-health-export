@@ -1,5 +1,8 @@
 use clap::{Parser, Subcommand};
-mod commands;
+mod convert;
+mod records;
+mod scan;
+mod value_parsers;
 
 #[derive(Parser, Debug)]
 struct Entry {
@@ -9,14 +12,14 @@ struct Entry {
 
 #[derive(Subcommand, Debug)]
 enum Command {
-    Scan(commands::scan::Input),
-    Convert(commands::convert::Input),
+    Scan(scan::Input),
+    Convert(convert::Input),
 }
 
 fn main() {
     let entry = Entry::parse();
     match &entry.command {
-        Command::Scan(input) => commands::scan::exec(input),
-        Command::Convert(input) => commands::convert::exec(input),
-    }
+        Command::Scan(input) => scan::exec(input),
+        Command::Convert(input) => convert::exec(input),
+    };
 }
